@@ -17,9 +17,13 @@
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
-# Ignoring Mirror
+# Ignoring external libs and additional folders
 /[Aa]ssets/Mirror/
 /[Aa]ssets/Mirror.meta
+/[Aa]ssets/TextMesh Pro/
+/[Aa]ssets/TextMesh Pro.meta
+/[Aa]ssets/Custom
+/[Aa]ssets/Custom.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
