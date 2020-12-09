@@ -208,13 +208,13 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 4099687023485116729, guid: 192e95a37fd6786489b0374e78e337a5,
+  playerPrefab: {fileID: 4944789954261779336, guid: 89e9deb2df7e7054f9349190fc228d74,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
-  menuScene: Assets/Scenes/Scene_Lobby.unity
-  roomPlayerPrefab: {fileID: 4099687023485116728, guid: 192e95a37fd6786489b0374e78e337a5,
+  minPlayers: 2
+  roomPlayerPrefab: {fileID: 8126540325570003167, guid: 9c749fe96b39cb346862adf76dff24b4,
     type: 3}
   SceneLobbyName: Scene_Lobby
 --- !u!4 &420062262
@@ -608,6 +608,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534388001423384343, guid: 550b06e28221ae64ca5d2a1fbcf77040,
+        type: 3}
+      propertyPath: m_text
+      value: ' Enter name...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534388001423384343, guid: 550b06e28221ae64ca5d2a1fbcf77040,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534388001423384343, guid: 550b06e28221ae64ca5d2a1fbcf77040,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534388001423384343, guid: 550b06e28221ae64ca5d2a1fbcf77040,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 3680616506041721918, guid: 550b06e28221ae64ca5d2a1fbcf77040,
         type: 3}
