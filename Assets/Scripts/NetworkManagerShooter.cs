@@ -15,7 +15,13 @@ public class NetworkManagerShooter : NetworkManager
     public static event Action OnClientDisconnected;
     public string SceneLobbyName;
 
+    [Header("Game")]
+    [SerializeField] private NetworkGamePlayerShooter gamePlayerPrefab = null;
+    //[SerializeField] private GameObject playerSpawnSystem = null;
+    //[SerializeField] private GameObject roundSystem = null;
+
     public List<NetworkRoomPlayerShooter> RoomPlayers { get; } = new List<NetworkRoomPlayerShooter>();
+    public List<NetworkGamePlayerShooter> GamePlayers { get; } = new List<NetworkGamePlayerShooter>();
 
     public override void OnStartServer() => spawnPrefabs = Resources.LoadAll<GameObject>("SpawnablePrefabs").ToList();
 
@@ -107,4 +113,33 @@ public class NetworkManagerShooter : NetworkManager
 
         return true;
 	}
+
+    public void StartGame()
+	{
+        if(SceneManager.GetActiveScene().name == SceneLobbyName)
+		{
+            if (!IsReadyToStart()) { return; }
+            ServerChangeScene("Scene_Map_01");
+		}
+	}
+
+    public override void ServerChangeScene(string newSceneName)
+    {
+        // From menu to game
+        if (SceneManager.GetActiveScene().name == SceneLobbyName && newSceneName.StartsWith("Scene_Map"))
+        {
+            for (int i = RoomPlayers.Count - 1; i >= 0; i--)
+            {
+                var conn = RoomPlayers[i].connectionToClient;
+                var gameplayerInstance = Instantiate(gamePlayerPrefab);
+                gameplayerInstance.SetDisplayName(RoomPlayers[i].DisplayName);
+
+                NetworkServer.Destroy(conn.identity.gameObject);
+
+                NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject);
+            }
+        }
+
+        base.ServerChangeScene(newSceneName);
+    }
 }

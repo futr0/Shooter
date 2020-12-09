@@ -92,7 +92,7 @@ public class NetworkRoomPlayerShooter : NetworkBehaviour
 	}
 
 	public void HandleReadyToStart(bool readyToStart)
-	{
+	{ 
 		if (!isLeader) { return; }
 		startGameButton.interactable = readyToStart;
 	}
@@ -115,6 +115,6 @@ public class NetworkRoomPlayerShooter : NetworkBehaviour
 	{
 		if (Room.RoomPlayers[0].connectionToClient != connectionToClient) { return; }
 
-		// Start Game
+		Room.StartGame();
 	}
 }
